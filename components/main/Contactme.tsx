@@ -1,4 +1,3 @@
-// components/ContactMe.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -28,22 +27,22 @@ const ContactMe = () => {
 
     emailjs
       .send(
-        "service_yxa02n8", // ✅ Your EmailJS Service ID
-        "template_yourtemplateid", // ✅ Replace with your Template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          title: "New message from portfolio contact form",
         },
-        "fKJ9evx8T2TfCwmxE" // ✅ Your Public Key
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       )
       .then(
         () => {
           setSuccess(true);
           setFormData({ name: "", email: "", message: "" });
         },
-        () => {
+        (err) => {
+          console.error("EmailJS Error: ", err);
           setError(true);
         }
       );

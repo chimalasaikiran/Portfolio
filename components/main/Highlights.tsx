@@ -3,7 +3,6 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 const certifications = [
   {
@@ -94,7 +93,7 @@ const Highlights = () => {
           <h3 className="text-2xl font-semibold mb-6">🔗 Connect With Me</h3>
           <div className="flex flex-wrap gap-6 justify-center">
             {socialLinks.map((social, idx) => (
-              <Link
+              <a
                 key={idx}
                 href={social.link}
                 target="_blank"
@@ -103,7 +102,7 @@ const Highlights = () => {
               >
                 <Image src={social.icon} alt={social.name} width={20} height={20} />
                 {social.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
